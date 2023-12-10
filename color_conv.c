@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 23:05:30 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 02:11:04 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 16:29:43 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	rgb(unsigned char r, unsigned char g, unsigned char b)
 {
-	return (*(int *)(unsigned char [4]){b, g, r});
+	return (*(int *)(unsigned char[4]){b, g, r});
 }

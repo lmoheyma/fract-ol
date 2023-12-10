@@ -6,20 +6,20 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:00:22 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 05:00:25 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 17:01:07 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract-ol.h"
 
-int close_window(void)
+int	close_window(void)
 {
 	// mlx_destroy_display(fractal.ptr);
 	// free(fractal.ptr);
 	exit(0);
 }
 
-int mouse_hook(int mousecode, int x, int y, t_fractal *fractal)
+int	mouse_hook(int mousecode, int x, int y, t_fractal *fractal)
 {
 	if (mousecode == 4)
 		zoom(fractal, x, y);
@@ -29,7 +29,7 @@ int mouse_hook(int mousecode, int x, int y, t_fractal *fractal)
 	return (0);
 }
 
-int key_hook(int keycode, t_fractal *fractal, char *fractal_name)
+int	key_hook(int keycode, t_fractal *fractal, char *fractal_name)
 {
 	if (keycode == KEY_ESC)
 		close_window();
@@ -41,24 +41,25 @@ int key_hook(int keycode, t_fractal *fractal, char *fractal_name)
 		fractal->y1 += 80 / fractal->zoom;
 	else if (keycode == KEY_RIGHT_ARROW)
 		fractal->x1 += 80 / fractal->zoom;
+	// else if (keycode == KEY_Q)
+		
+	// else if (keycode == KEY_R)
+	
 	choose_fractal(fractal->id, fractal);
 	return (0);
 }
 
-void fractal_init(t_fractal *fractal, char *id)
+void	fractal_init(t_fractal *fractal, char *id)
 {
 	fractal->id = id;
 	fractal->x1 = -2.1;
 	fractal->y1 = -1.2;
 	fractal->zoom = 300;
 	fractal->max_iter = MAX_ITER;
-	fractal->iter_red = 100;
-	fractal->iter_blue = 1000;
-	fractal->iter_green = 10000;
 }
 
-int main(int argc, char **argv)
-{	
+int	main(int argc, char **argv)
+{
 	t_fractal	fractal;
 
 	if (parsing(argc, argv))
@@ -78,5 +79,5 @@ int main(int argc, char **argv)
 	mlx_hook(fractal.window, 17, 0L, close_window, fractal.ptr);
 	choose_fractal(argv[1], &fractal);
 	mlx_loop(fractal.ptr);
-	//free 
+	// free
 }

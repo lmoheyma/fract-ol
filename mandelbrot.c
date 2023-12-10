@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 01:56:47 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 02:14:37 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 16:30:19 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	draw_mandelbrot(t_fractal *fractal)
 {
 	fractal->x = 0.0;
 	fractal->y = 0.0;
-	
 	while (fractal->y < HEIGHT)
 	{
 		while (fractal->x < WIDTH)
@@ -32,7 +31,7 @@ int	draw_mandelbrot(t_fractal *fractal)
 
 void	mandelbrot(t_fractal *fractal)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	fractal->zx = 0.0;
@@ -49,7 +48,9 @@ void	mandelbrot(t_fractal *fractal)
 		i++;
 	}
 	if (i == fractal->max_iter)
-		mlx_pixel_put(fractal->ptr, fractal->window, fractal->x, fractal->y, 0x000000);
+		mlx_pixel_put(fractal->ptr, fractal->window, fractal->x, fractal->y,
+			0x000000);
 	else
-		mlx_pixel_put(fractal->ptr, fractal->window, fractal->x, fractal->y, rgb(i*255 / MAX_ITER, 0, fractal->zoom / 330));
+		mlx_pixel_put(fractal->ptr, fractal->window, fractal->x, fractal->y,
+			rgb(i * 255 / MAX_ITER, 0, fractal->zoom / 330));
 }
