@@ -3,21 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   fract-ol.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:50:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 05:37:28 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 15:22:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef FRACT_OL_H
+# define FRACT_OL_H
 
 #include "libft/libft.h"
 #include "mlx/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-#ifndef FRACT_OL_H
-# define FRACT_OL_H
+#include <math.h>
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -87,6 +88,10 @@ void				julia(t_fractal *fractal);
 // Buddhabrot
 int					draw_buddhabrot(t_fractal *fractal);
 void				buddhabrot(t_fractal *fractal);
+
+//Burning Ship
+int 				draw_burning_ship(t_fractal *fractal);
+void				burning_ship(t_fractal *fractal);
 
 // Linked list
 t_tmplst			*new_node(int x, int y);
