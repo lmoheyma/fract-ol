@@ -6,11 +6,11 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 01:56:47 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 16:30:19 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:02:36 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fract_ol.h"
 
 int	draw_mandelbrot(t_fractal *fractal)
 {
@@ -32,6 +32,7 @@ int	draw_mandelbrot(t_fractal *fractal)
 void	mandelbrot(t_fractal *fractal)
 {
 	int	i;
+	int	log_zn;
 
 	i = 1;
 	fractal->zx = 0.0;
@@ -48,9 +49,8 @@ void	mandelbrot(t_fractal *fractal)
 		i++;
 	}
 	if (i == fractal->max_iter)
-		mlx_pixel_put(fractal->ptr, fractal->window, fractal->x, fractal->y,
-			0x000000);
+		color_pixel(fractal, fractal->x, fractal->y, 000000);
 	else
-		mlx_pixel_put(fractal->ptr, fractal->window, fractal->x, fractal->y,
-			rgb(i * 255 / MAX_ITER, 0, fractal->zoom / 330));
+		color_pixel(fractal, fractal->x, fractal->y, rgb(i * 255 / MAX_ITER, 0,
+				fractal->zoom / 330));
 }

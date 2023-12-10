@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fract-ol.c                                         :+:      :+:    :+:   */
+/*   fract_ol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:00:22 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 17:01:07 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 19:44:28 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract-ol.h"
+#include "fract_ol.h"
 
 int	close_window(void)
 {
-	// mlx_destroy_display(fractal.ptr);
-	// free(fractal.ptr);
 	exit(0);
 }
 
@@ -41,10 +39,10 @@ int	key_hook(int keycode, t_fractal *fractal, char *fractal_name)
 		fractal->y1 += 80 / fractal->zoom;
 	else if (keycode == KEY_RIGHT_ARROW)
 		fractal->x1 += 80 / fractal->zoom;
-	// else if (keycode == KEY_Q)
-		
-	// else if (keycode == KEY_R)
-	
+	else if (keycode == KEY_Q && ft_strncmp(fractal->id, "Julia", 6))
+		fractal->cx += -0.08;
+	else if (keycode == KEY_R && ft_strncmp(fractal->id, "Julia", 6))
+		fractal->cy -= 0.005;
 	choose_fractal(fractal->id, fractal);
 	return (0);
 }
@@ -74,10 +72,12 @@ int	main(int argc, char **argv)
 		free(fractal.window);
 		return (1);
 	}
+	fractal.image = mlx_new_image(fractal.ptr, WIDTH, HEIGHT);
+	fractal.data_addr = mlx_get_data_addr(fractal.image,
+			&fractal.bits_per_pixel, &fractal.size_line, &fractal.endian);
 	mlx_key_hook(fractal.window, key_hook, &fractal);
 	mlx_mouse_hook(fractal.window, mouse_hook, &fractal);
 	mlx_hook(fractal.window, 17, 0L, close_window, fractal.ptr);
 	choose_fractal(argv[1], &fractal);
 	mlx_loop(fractal.ptr);
-	// free
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fract-ol.h                                         :+:      :+:    :+:   */
+/*   fract_ol.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:50:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 17:00:05 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:01:58 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define MAX_ITER 100
+# define MAX_ITER 50
 # define KEY_ESC 65307
 # define KEY_LEFT_ARROW 65361
 # define KEY_UP_ARROW 65362
@@ -35,6 +35,11 @@ typedef struct s_fractal
 {
 	void	*ptr;
 	void	*window;
+	void	*image;
+	void	*data_addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
 	char	*id;
 	double	x;
 	double	y;
@@ -74,7 +79,8 @@ int			draw_burning_ship(t_fractal *fractal);
 void		burning_ship(t_fractal *fractal);
 
 // Colors
-int			rgb(unsigned char r, unsigned char g, unsigned char b);
+void		color_pixel(t_fractal *fractal, int x, int y, int color);
+int			rgb(int r, int g, int b);
 
 // Zoom
 void		zoom(t_fractal *fractal, int x, int y);
