@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 02:00:46 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 20:52:24 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 23:56:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	choose_fractal(char *argv, t_fractal *fractal)
 	{
 		if (!fractal->cx && !fractal->cy)
 		{
-			fractal->cx = -0.4;
-			fractal->cy = 0.6;
+			fractal->cx = -0.8;
+			fractal->cy = 0.156;
 		}
 		draw_julia(fractal);
 	}
@@ -39,14 +39,14 @@ int	parsing(int argc, char **argv)
 		write(1, "Not enough arguments\n", 22);
 		return (write(1,
 				"Available :\n-> Mandelbrot\n-> Julia\n-> BurningShip\n",
-				59));
+				51));
 	}
 	else if (argc > 2)
 	{
 		write(1, "Too much arguments\n", 20);
 		return (write(1,
 				"Available :\n-> Mandelbrot\n-> Julia\n-> BurningShip\n",
-				59));
+				51));
 	}
 	else if (ft_strncmp("Mandelbrot", argv[1], 12) != 0 && ft_strncmp("Julia",
 			argv[1], 5) != 0 && ft_strncmp("BurningShip", argv[1], 12) != 0)
@@ -54,7 +54,7 @@ int	parsing(int argc, char **argv)
 		write(1, "Invalid arguments\n", 19);
 		return (write(1,
 				"Available :\n-> Mandelbrot\n-> Julia\n-> BurningShip\n",
-				59));
+				51));
 	}
 	else
 		return (0);

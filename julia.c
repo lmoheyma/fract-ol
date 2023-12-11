@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 01:57:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 20:51:31 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/11 02:19:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void	julia(t_fractal *fractal)
 	if (i == fractal->max_iter)
 		color_pixel(fractal, fractal->x, fractal->y, 000000);
 	else
-		color_pixel(fractal, fractal->x, fractal->y, rgb(fractal->zoom / 200, 0,
-				i * 255 / fractal->max_iter));
+		color_pixel(fractal, fractal->x, fractal->y, rgb(fmod(fractal->zoom / (i * 2), 256.0), fmod(i * 255 / fractal->zoom, 256.0),
+				fmod(fractal->zoom - pow(i, 2), 256.0)));
 }

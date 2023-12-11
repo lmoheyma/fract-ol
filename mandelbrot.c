@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 01:56:47 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 21:02:36 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/11 02:20:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ int	draw_mandelbrot(t_fractal *fractal)
 void	mandelbrot(t_fractal *fractal)
 {
 	int	i;
-	int	log_zn;
-
+	
 	i = 1;
 	fractal->zx = 0.0;
 	fractal->zy = 0.0;
@@ -51,6 +50,5 @@ void	mandelbrot(t_fractal *fractal)
 	if (i == fractal->max_iter)
 		color_pixel(fractal, fractal->x, fractal->y, 000000);
 	else
-		color_pixel(fractal, fractal->x, fractal->y, rgb(i * 255 / MAX_ITER, 0,
-				fractal->zoom / 330));
+	color_pixel(fractal, fractal->x, fractal->y, rgb(fmod(fractal->zoom / (i * 10), 256.0), 0, fmod(i * 255 / MAX_ITER, 256)));
 }

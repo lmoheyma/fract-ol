@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract_ol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:00:22 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 19:44:28 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2023/12/10 21:46:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ int	key_hook(int keycode, t_fractal *fractal, char *fractal_name)
 		fractal->y1 += 80 / fractal->zoom;
 	else if (keycode == KEY_RIGHT_ARROW)
 		fractal->x1 += 80 / fractal->zoom;
-	else if (keycode == KEY_Q && ft_strncmp(fractal->id, "Julia", 6))
-		fractal->cx += -0.08;
-	else if (keycode == KEY_R && ft_strncmp(fractal->id, "Julia", 6))
-		fractal->cy -= 0.005;
+	// else if (keycode == KEY_Q && ft_strncmp(fractal->id, "Julia", 6))
+	// 	fractal->cx += -0.08;
+	// else if (keycode == KEY_R && ft_strncmp(fractal->id, "Julia", 6))
+	// 	fractal->cy -= 0.005;
 	choose_fractal(fractal->id, fractal);
 	return (0);
 }
