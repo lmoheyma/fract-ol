@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:50:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/11 02:10:05 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/11 03:44:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,11 +67,11 @@ void		fractal_init(t_fractal *fractal, char *id);
 // Window
 int			key_hook(int keycode, t_fractal *fractal, char *fractal_name);
 int			mouse_hook(int mousecode, int x, int y, t_fractal *fractal);
-int			close_window(void);
+int			close_window(t_fractal *fractal);
 
 // Parsing
 int			parsing(int argc, char **argv);
-int			choose_fractal(char *argv, t_fractal *fractal);
+int			choose_fractal(char *str, t_fractal *fractal);
 
 // Mandelbrot
 int			draw_mandelbrot(t_fractal *fractal);
