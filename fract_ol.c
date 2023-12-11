@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract_ol.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 14:00:22 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/11 03:46:39 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/11 16:55:15 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	close_window(t_fractal *fractal)
 {
-	//mlx_destroy_image(fractal->ptr, fractal->image);
-	//mlx_destroy_window(fractal->ptr, fractal->window);
-	// free(fractal->ptr);
-	// free(fractal);
+	mlx_destroy_image(fractal->ptr, fractal->image);
+	mlx_destroy_window(fractal->ptr, fractal->window);
+	mlx_destroy_display(fractal->ptr);
+	free(fractal->ptr);
+	free(fractal);
 	exit(1);
 }
 
@@ -43,10 +44,14 @@ int	key_hook(int keycode, t_fractal *fractal, char *fractal_name)
 		fractal->y1 += 80 / fractal->zoom;
 	else if (keycode == KEY_RIGHT_ARROW)
 		fractal->x1 += 80 / fractal->zoom;
-	// else if (keycode == KEY_Q && ft_strncmp(fractal->id, "Julia", 6))
-	// 	fractal->cx += -0.08;
-	// else if (keycode == KEY_R && ft_strncmp(fractal->id, "Julia", 6))
-	// 	fractal->cy -= 0.005;
+	else if (keycode == KEY_P && ft_strncmp(fractal->id, "Julia", 6) == 0)
+		fractal->cx += 0.02;
+	else if (keycode == KEY_O && ft_strncmp(fractal->id, "Julia", 6) == 0)
+		fractal->cx -= 0.02;
+	else if (keycode == KEY_K && ft_strncmp(fractal->id, "Julia", 6) == 0)
+		fractal->cy += 0.02;
+	else if (keycode == KEY_L && ft_strncmp(fractal->id, "Julia", 6) == 0)
+		fractal->cy -= 0.02;
 	choose_fractal(fractal->id, fractal);
 	return (0);
 }
@@ -79,8 +84,7 @@ int	main(int argc, char **argv)
 			&fractal->bits_per_pixel, &fractal->size_line, &fractal->endian);
 	mlx_key_hook(fractal->window, key_hook, fractal);
 	mlx_mouse_hook(fractal->window, mouse_hook, fractal);
-	mlx_hook(fractal->window, 17, 0L, close_window, fractal->ptr);
+	mlx_hook(fractal->window, 17, 0, close_window, fractal);
 	choose_fractal(argv[1], fractal);
 	mlx_loop(fractal->ptr);
-	free(fractal->ptr);
 }

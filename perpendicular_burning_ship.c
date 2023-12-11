@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   perpendicular_burning_ship.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/10 01:56:47 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/11 14:54:31 by lmoheyma         ###   ########.fr       */
+/*   Created: 2023/12/11 13:48:29 by lmoheyma          #+#    #+#             */
+/*   Updated: 2023/12/11 15:04:43 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fract_ol.h"
 
-int	draw_mandelbrot(t_fractal *fractal)
+int	draw_p_burning_ship(t_fractal *fractal)
 {
 	fractal->x = 0.0;
 	fractal->y = 0.0;
@@ -20,7 +20,7 @@ int	draw_mandelbrot(t_fractal *fractal)
 	{
 		while (fractal->x < WIDTH)
 		{
-			mandelbrot(fractal);
+			p_burning_ship(fractal);
 			fractal->x++;
 		}
 		fractal->y++;
@@ -29,7 +29,7 @@ int	draw_mandelbrot(t_fractal *fractal)
 	return (0);
 }
 
-void	mandelbrot(t_fractal *fractal)
+void	p_burning_ship(t_fractal *fractal)
 {
 	int	i;
 
@@ -43,13 +43,14 @@ void	mandelbrot(t_fractal *fractal)
 	{
 		fractal->tempx = fractal->zx * fractal->zx - fractal->zy * fractal->zy
 			+ fractal->cx;
-		fractal->zy = 2 * fractal->zx * fractal->zy + fractal->cy;
+		fractal->zy = -2.0 * fractal->zx * fabs(fractal->zy) + fractal->cy;
 		fractal->zx = fractal->tempx;
 		i++;
 	}
 	if (i == fractal->max_iter)
 		color_pixel(fractal, fractal->x, fractal->y, 000000);
 	else
-		color_pixel(fractal, fractal->x, fractal->y, rgb(fmod(fractal->zoom / (i
-						* 10), 256.0), 0, fmod(i * 255 / MAX_ITER, 256)));
+		color_pixel(fractal, fractal->x, fractal->y, rgb(fractal->zoom / (i
+					* 2), (i * 255 / fractal->zoom), (fractal->zoom - pow(i,
+						2))));
 }

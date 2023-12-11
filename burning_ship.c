@@ -2,14 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   burning_ship.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2023/12/10 18:32:41 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 18:32:41 by lmoheyma         ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/11 15:58:41 by lmoheyma          #+#    #+#             */
+/*   Updated: 2023/12/11 15:58:41 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +50,7 @@ void	burning_ship(t_fractal *fractal)
 	if (i == fractal->max_iter)
 		color_pixel(fractal, fractal->x, fractal->y, 000000);
 	else
-		color_pixel(fractal, fractal->x, fractal->y, rgb(i * 10, 0, i * 255
-				/ fractal->max_iter));
+		color_pixel(fractal, fractal->x, fractal->y, rgb(fractal->zoom / (i
+					* 2), (i * 255 / fractal->zoom), (fractal->zoom - pow(i,
+						2))));
 }

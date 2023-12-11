@@ -2,10 +2,10 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror
 
-INCLUDE = -I fract_ol.h -L libft/ -lft mlx/libmlx_Linux.a -L mlx -lXext -lX11 -lm -O3
+INCLUDE = -I fract_ol.h -L libft/ -lft mlx/libmlx_Linux.a -L mlx -lXext -lX11 -lm
 
 SRCS = fract_ol.c mandelbrot.c color_conv.c zoom.c julia.c \
-	parsing.c burning_ship.c mandelbar.c
+	parsing.c burning_ship.c mandelbar.c perpendicular_burning_ship.c
 
 OBJS = $(SRCS:.c=.o)
 

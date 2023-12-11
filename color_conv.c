@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color_conv.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 23:05:30 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/11 01:51:17 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/11 14:01:15 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ double	smooth_color(int i, double zx, double zy)
 	return (i + 1 - n_smooth);
 }
 
-t_rgb smooth_to_rgb(double smooth_color)
+t_rgb	smooth_to_rgb(double smooth_color)
 {
 	t_rgb	c;
 

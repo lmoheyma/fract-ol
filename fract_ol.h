@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract_ol.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:50:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/11 03:44:17 by marvin           ###   ########.fr       */
+/*   Updated: 2023/12/11 16:58:25 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,16 @@
 
 # define WIDTH 1280
 # define HEIGHT 720
-# define MAX_ITER 100
+# define MAX_ITER 70
 # define KEY_ESC 65307
 # define KEY_LEFT_ARROW 65361
 # define KEY_UP_ARROW 65362
 # define KEY_RIGHT_ARROW 65363
 # define KEY_DOWN_ARROW 65364
-# define KEY_Q 113
-# define KEY_R 114
+# define KEY_P 112
+# define KEY_O 111
+# define KEY_L 108
+# define KEY_K 107
 
 typedef struct s_fractal
 {
@@ -85,11 +87,19 @@ void		julia(t_fractal *fractal);
 int			draw_burning_ship(t_fractal *fractal);
 void		burning_ship(t_fractal *fractal);
 
+//Mandelbar
+int			draw_mandelbar(t_fractal *fractal);
+void		mandelbar(t_fractal *fractal);
+
+//Perpendicular BurningShip
+int			draw_p_burning_ship(t_fractal *fractal);
+void		p_burning_ship(t_fractal *fractal);
+
 // Colors
 void		color_pixel(t_fractal *fractal, int x, int y, int color);
 int			rgb(int r, int g, int b);
 double		smooth_color(int i, double zx, double zy);
-t_rgb 		smooth_to_rgb(double smooth_color);
+t_rgb		smooth_to_rgb(double smooth_color);
 
 // Zoom
 void		zoom(t_fractal *fractal, int x, int y);
