@@ -6,15 +6,15 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:50:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/11 16:58:25 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:31:42 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_OL_H
 # define FRACT_OL_H
 
-# include "libft/libft.h"
-# include "mlx/mlx.h"
+# include "../libft/libft.h"
+# include "../mlx/mlx.h"
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>

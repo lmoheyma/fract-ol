@@ -6,11 +6,11 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 23:03:13 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/10 18:44:09 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:31:22 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "../inc/fract_ol.h"
 
 void	zoom(t_fractal *fractal, int x, int y)
 {

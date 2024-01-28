@@ -4,8 +4,14 @@ FLAGS = -Wall -Wextra -Werror
 
 INCLUDE = -I fract_ol.h -L libft/ -lft mlx/libmlx_Linux.a -L mlx -lXext -lX11 -lm
 
-SRCS = fract_ol.c mandelbrot.c color_conv.c zoom.c julia.c \
-	parsing.c burning_ship.c mandelbar.c perpendicular_burning_ship.c
+SRCS = src/fract_ol.c \
+	src/mandelbrot.c \
+	src/color_conv.c \
+	src/zoom.c src/julia.c \
+	src/parsing.c \
+	src/burning_ship.c \
+	src/mandelbar.c \
+	src/perpendicular_burning_ship.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -18,6 +24,7 @@ all: $(NAME)
 
 $(NAME) : $(OBJS)
 	make -C libft/
+	make -C mlx/
 	$(CC) $(FLAGS) $(OBJS) -o $(NAME) $(INCLUDE)
 
 clean:

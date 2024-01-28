@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   perpendicular_burning_ship.c                       :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 13:48:29 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/11 15:04:43 by lmoheyma         ###   ########.fr       */
+/*   Created: 2023/12/10 01:57:05 by lmoheyma          #+#    #+#             */
+/*   Updated: 2024/01/28 18:31:09 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "../inc/fract_ol.h"
 
-int	draw_p_burning_ship(t_fractal *fractal)
+int	draw_julia(t_fractal *fractal)
 {
 	fractal->x = 0.0;
 	fractal->y = 0.0;
@@ -20,7 +20,7 @@ int	draw_p_burning_ship(t_fractal *fractal)
 	{
 		while (fractal->x < WIDTH)
 		{
-			p_burning_ship(fractal);
+			julia(fractal);
 			fractal->x++;
 		}
 		fractal->y++;
@@ -29,22 +29,20 @@ int	draw_p_burning_ship(t_fractal *fractal)
 	return (0);
 }
 
-void	p_burning_ship(t_fractal *fractal)
+void	julia(t_fractal *fractal)
 {
 	int	i;
 
-	i = 1;
-	fractal->zx = 0.0;
-	fractal->zy = 0.0;
-	fractal->cx = (fractal->x / fractal->zoom) + fractal->x1;
-	fractal->cy = (fractal->y / fractal->zoom) + fractal->y1;
+	i = 0;
+	fractal->zx = fractal->x / fractal->zoom + fractal->x1;
+	fractal->zy = fractal->y / fractal->zoom + fractal->y1;
 	while (fractal->zx * fractal->zx + fractal->zy * fractal->zy < 4
 		&& i < fractal->max_iter)
 	{
-		fractal->tempx = fractal->zx * fractal->zx - fractal->zy * fractal->zy
+		fractal->tempx = fractal->zx;
+		fractal->zx = fractal->zx * fractal->zx - fractal->zy * fractal->zy
 			+ fractal->cx;
-		fractal->zy = -2.0 * fractal->zx * fabs(fractal->zy) + fractal->cy;
-		fractal->zx = fractal->tempx;
+		fractal->zy = 2 * fractal->zy * fractal->tempx + fractal->cy;
 		i++;
 	}
 	if (i == fractal->max_iter)

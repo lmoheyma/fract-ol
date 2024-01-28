@@ -6,11 +6,11 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 02:00:46 by lmoheyma          #+#    #+#             */
-/*   Updated: 2023/12/11 15:32:52 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/01/28 18:31:16 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fract_ol.h"
+#include "../inc/fract_ol.h"
 
 int	choose_fractal(char *str, t_fractal *fractal)
 {
